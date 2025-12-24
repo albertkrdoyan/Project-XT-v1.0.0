@@ -89,6 +89,7 @@ namespace Project_XT_v1_0_0
             dataGridView1.Columns[3].Width = (int)((double)dgvWidth * 0.085);
             dataGridView1.Columns[4].Width = (int)((double)dgvWidth * 0.085);
             dataGridView1.Columns[5].Width = (int)((double)dgvWidth * 0.12);
+            //hello
         }
 
 		private void Remove_button_Click(object sender, EventArgs e)

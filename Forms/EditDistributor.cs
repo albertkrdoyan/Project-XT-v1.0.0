@@ -17,10 +17,10 @@ namespace Project_XT_v1_0_0.Forms
 
         public EditDistributor(string orgName)
         {
-            InitializeComponent();            
+            InitializeComponent();
 
-            db = new Database("C:\\Users\\alber\\Desktop\\Project XT DB\\projext_xt.db");
-            dt = db.GetData($"SELECT * FROM Distributors Where Name = '{orgName}'");
+			db = new Database("C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\Project XT DB\\projext_xt.db");
+			dt = db.GetData($"SELECT * FROM Distributors Where Name = '{orgName}'");
 
 			originalData = new string[3];
 			originalData[0] = dt.Rows[0][0].ToString()!;

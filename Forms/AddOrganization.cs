@@ -13,10 +13,10 @@ namespace Project_XT_v1_0_0.Forms
         readonly Database db;
         public AddOrganization()
         {
-            InitializeComponent();                        
+            InitializeComponent();
 
-            db = new Database("C:\\Users\\alber\\Desktop\\Project XT DB\\projext_xt.db");
-        }
+			db = new Database("C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\Project XT DB\\projext_xt.db");
+		}
 
         private void Decline_Click(object sender, EventArgs e)
         {

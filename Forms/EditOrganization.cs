@@ -16,9 +16,9 @@ namespace Project_XT_v1_0_0.Forms
         {
             InitializeComponent();
 
-            db = new Database("C:\\Users\\alber\\Desktop\\Project XT DB\\projext_xt.db");
+			db = new Database("C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\Project XT DB\\projext_xt.db");
 
-            DataTable dt = db.GetData($"SELECT * FROM Organizations Where Name = '{orgName}'");
+			DataTable dt = db.GetData($"SELECT * FROM Organizations Where Name = '{orgName}'");
             originalData = new string[4];
 
             textBox1.Text = dt.Rows[0][0].ToString();

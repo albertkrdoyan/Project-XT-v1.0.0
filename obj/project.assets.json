@@ -86,11 +86,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alber\\source\\repos\\Project XT v1.0.0\\Project XT v1.0.0.csproj",
+      "projectUniqueName": "C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\Project XT v1.0.0.csproj",
       "projectName": "Project XT v1.0.0",
-      "projectPath": "C:\\Users\\alber\\source\\repos\\Project XT v1.0.0\\Project XT v1.0.0.csproj",
+      "projectPath": "C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\Project XT v1.0.0.csproj",
       "packagesPath": "C:\\Users\\alber\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alber\\source\\repos\\Project XT v1.0.0\\obj\\",
+      "outputPath": "C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\alber\\AppData\\Roaming\\NuGet\\NuGet.Config",

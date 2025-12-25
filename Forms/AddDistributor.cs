@@ -17,9 +17,9 @@ namespace Project_XT_v1_0_0.Forms
         {
             InitializeComponent();
 
-            db = new Database("C:\\Users\\alber\\Desktop\\Project XT DB\\projext_xt.db");
+			db = new Database("C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\Project XT DB\\projext_xt.db");
 
-            dt = db.GetData("SELECT * FROM Organizations ORDER BY Name");
+			dt = db.GetData("SELECT * FROM Organizations ORDER BY Name");
             
             comboBox1.DataSource = dt;
             comboBox1.DisplayMember = "Name";

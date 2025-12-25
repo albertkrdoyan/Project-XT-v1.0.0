@@ -35,7 +35,11 @@
             edit_button = new Button();
             show_goods_button = new Button();
             remove_button = new Button();
+            splitContainer1 = new SplitContainer();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
             SuspendLayout();
             // 
             // show_orgs
@@ -61,10 +65,11 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 103);
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(0, 0);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(124, 107);
+            dataGridView1.Size = new Size(511, 300);
             dataGridView1.TabIndex = 2;
             // 
             // add_button
@@ -107,24 +112,39 @@
             remove_button.UseVisualStyleBackColor = true;
             remove_button.Click += Remove_button_Click;
             // 
+            // splitContainer1
+            // 
+            splitContainer1.Location = new Point(12, 94);
+            splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel2
+            // 
+            splitContainer1.Panel2.Controls.Add(dataGridView1);
+            splitContainer1.Size = new Size(624, 300);
+            splitContainer1.SplitterDistance = 98;
+            splitContainer1.SplitterWidth = 15;
+            splitContainer1.TabIndex = 8;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1417, 450);
+            Controls.Add(splitContainer1);
             Controls.Add(remove_button);
             Controls.Add(show_goods_button);
             Controls.Add(edit_button);
             Controls.Add(add_button);
-            Controls.Add(dataGridView1);
             Controls.Add(show_dists);
             Controls.Add(show_orgs);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             WindowState = FormWindowState.Maximized;
-            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -137,5 +157,6 @@
         private Button edit_button;
         private Button show_goods_button;
         private Button remove_button;
+        private SplitContainer splitContainer1;
     }
 }

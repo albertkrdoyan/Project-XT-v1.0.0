@@ -12,14 +12,29 @@ namespace Project_XT_v1_0_0
         {
             InitializeComponent();
 
-            db = new Database("C:\\Users\\alber\\Desktop\\Project XT DB\\projext_xt.db");
+            db = new Database("C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\Project XT DB\\projext_xt.db");
 
             MyDataGridViewStyle.Init(ref dataGridView1);
+
+            dataGridView1.Visible = false;
+
+            splitContainer1.Visible = false;
+            splitContainer1.SplitterWidth = 7;
+            splitContainer1.BackColor = Color.LightSeaGreen;
+            splitContainer1.Panel1.BackColor = splitContainer1.Panel2.BackColor = BackColor;
+            splitContainer1.SplitterDistance = 75;
         }
 
         private void Show_orgs_Click(object sender, EventArgs e)
         {
-            currentDataGridView = "Organizations";
+			splitContainer1.Visible = true;
+
+			splitContainer1.Panel1Collapsed = true;
+            splitContainer1.Width = (int)((double)Width * 0.978);
+            splitContainer1.Height = (int)((double)Height * 0.825);
+            dataGridView1.Visible = true;
+
+			currentDataGridView = "Organizations";
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = db.GetData("SELECT * FROM Organizations ORDER BY Name");
 
@@ -30,11 +45,20 @@ namespace Project_XT_v1_0_0
             dataGridView1.Columns[2].Width = (int)((double)dgvWidth * 0.125);
             dataGridView1.Columns[3].Width = (int)((double)dgvWidth * 0.25);
             dataGridView1.Columns[4].Width = (int)((double)dgvWidth * 0.235);
+
+            dataGridView1.Focus();
         }
 
         private void Show_dists_Click(object sender, EventArgs e)
         {
-            currentDataGridView = "Distributors";
+			splitContainer1.Visible = true;
+
+			splitContainer1.Panel1Collapsed = true;
+			splitContainer1.Width = (int)((double)Width * 0.978);
+			splitContainer1.Height = (int)((double)Height * 0.825);
+			dataGridView1.Visible = true;
+
+			currentDataGridView = "Distributors";
             dataGridView1.Columns.Clear();
             dataGridView1.DataSource = db.GetData("SELECT * FROM Distributors ORDER BY Name");
 
@@ -45,7 +69,9 @@ namespace Project_XT_v1_0_0
             dataGridView1.Columns[2].Width = (int)((double)dgvWidth * 0.3);
             dataGridView1.Columns[3].Width = (int)((double)dgvWidth * 0.09);
             dataGridView1.Columns[4].Width = (int)((double)dgvWidth * 0.21);
-        }
+
+			dataGridView1.Focus();
+		}
 
         private void Edit_button_Click(object sender, EventArgs e)
         {
@@ -69,32 +95,35 @@ namespace Project_XT_v1_0_0
             dataGridView1!.Focus();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            dataGridView1.Width = (int)((double)Width * 0.978);
-            dataGridView1.Height = (int)((double)Height * 0.825);
-        }
-
         private void Show_goods_button_Click(object sender, EventArgs e)
         {
+			splitContainer1.Visible = true;
+
+			splitContainer1.Panel1Collapsed = false;
+			splitContainer1.Panel1MinSize = 100;
+            splitContainer1.Width = (int)((double)Width * 0.978);
+			splitContainer1.Height = (int)((double)Height * 0.825);
+			dataGridView1.Visible = true;
+
 			currentDataGridView = "Goods";
-			dataGridView1.Columns.Clear();
-			dataGridView1.DataSource = db.GetData("SELECT Name, Quantity, SellingPrice, Price, Difference, ATGAA FROM Goods ORDER BY Name");
+            dataGridView1.Columns.Clear();
+            dataGridView1.DataSource = db.GetData("SELECT Name, Quantity, SellingPrice, Price, Difference, ATGAA FROM Goods ORDER BY Name");
 
-			int dgvWidth = dataGridView1.Width;
+            int dgvWidth = dataGridView1.Width;
 
-			dataGridView1.Columns[0].Width = (int)((double)dgvWidth * 0.54);
-			dataGridView1.Columns[1].Width = (int)((double)dgvWidth * 0.085);
+            dataGridView1.Columns[0].Width = (int)((double)dgvWidth * 0.54);
+            dataGridView1.Columns[1].Width = (int)((double)dgvWidth * 0.085);
             dataGridView1.Columns[2].Width = (int)((double)dgvWidth * 0.085);
             dataGridView1.Columns[3].Width = (int)((double)dgvWidth * 0.085);
             dataGridView1.Columns[4].Width = (int)((double)dgvWidth * 0.085);
             dataGridView1.Columns[5].Width = (int)((double)dgvWidth * 0.12);
-            //hello
-        }
 
-		private void Remove_button_Click(object sender, EventArgs e)
+			dataGridView1.Focus();
+		}
+
+        private void Remove_button_Click(object sender, EventArgs e)
         {
-			if (currentDataGridView == "Organizations")
+            if (currentDataGridView == "Organizations")
             {
                 if (dataGridView1.SelectedCells[2].Value!.ToString() != "0") MessageBox.Show("Դուք չեք կարոհ հեռացնել այս կազմակերպությունը, քանի որ պարտքի չափը տարբեր է 0-ից:");
                 else
@@ -104,31 +133,31 @@ namespace Project_XT_v1_0_0
                         MessageBox.Show("Հեռացված է:");
                     }
                 }
-			}
-			else if (currentDataGridView == "Distributors")
+            }
+            else if (currentDataGridView == "Distributors")
             {
-				if (dataGridView1.SelectedCells[1].Value!.ToString() != "0") MessageBox.Show("Դուք չեք կարոհ հեռացնել այս դիստրիբյուտորին, քանի որ պարտքի չափը տարբեր է 0-ից:");
-				else
-				{
-					if (MessageBox.Show($"Դուք պատրաստվում եք հեռացնել '{dataGridView1.SelectedCells[0].Value!}' դիստրիբյուտորին:", "Դիստրիբյուտորտ հեռացում", MessageBoxButtons.YesNo) == DialogResult.Yes)
-					{
-						MessageBox.Show("Հեռացված է:");
-					}
-				}
-			}
+                if (dataGridView1.SelectedCells[1].Value!.ToString() != "0") MessageBox.Show("Դուք չեք կարոհ հեռացնել այս դիստրիբյուտորին, քանի որ պարտքի չափը տարբեր է 0-ից:");
+                else
+                {
+                    if (MessageBox.Show($"Դուք պատրաստվում եք հեռացնել '{dataGridView1.SelectedCells[0].Value!}' դիստրիբյուտորին:", "Դիստրիբյուտորտ հեռացում", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        MessageBox.Show("Հեռացված է:");
+                    }
+                }
+            }
             else if (currentDataGridView == "Goods")
             {
-				if (dataGridView1.SelectedCells[1].Value!.ToString() != "0") MessageBox.Show("Դուք չեք կարոհ հեռացնել այս ap8anqy, քանի որ քանակությունը տարբեր է 0-ից:");
-				else
-				{
-					if (MessageBox.Show($"Դուք պատրաստվում եք հեռացնել '{dataGridView1.SelectedCells[0].Value!}' ապրանքը:", "Ապրանքի հեռացում", MessageBoxButtons.YesNo) == DialogResult.Yes)
-					{
-						MessageBox.Show("Հեռացված է:");
-					}
-				}
-			}
+                if (dataGridView1.SelectedCells[1].Value!.ToString() != "0") MessageBox.Show("Դուք չեք կարոհ հեռացնել այս ap8anqy, քանի որ քանակությունը տարբեր է 0-ից:");
+                else
+                {
+                    if (MessageBox.Show($"Դուք պատրաստվում եք հեռացնել '{dataGridView1.SelectedCells[0].Value!}' ապրանքը:", "Ապրանքի հեռացում", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        MessageBox.Show("Հեռացված է:");
+                    }
+                }
+            }
 
             dataGridView1.Focus();
-		}
+        }
     }
 }

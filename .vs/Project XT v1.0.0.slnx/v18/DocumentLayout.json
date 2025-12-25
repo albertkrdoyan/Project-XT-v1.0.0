@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\alber\\source\\repos\\Project XT v1.0.0\\",
+  "WorkspaceRootPath": "C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{65CFAAFC-201D-EB2A-9873-17FA0106F15F}|Project XT v1.0.0.csproj|c:\\users\\alber\\source\\repos\\project xt v1.0.0\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{65CFAAFC-201D-EB2A-9873-17FA0106F15F}|Project XT v1.0.0.csproj|c:\\users\\alber\\desktop\\project xt v1.0.0\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{65CFAAFC-201D-EB2A-9873-17FA0106F15F}|Project XT v1.0.0.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{65CFAAFC-201D-EB2A-9873-17FA0106F15F}|Project XT v1.0.0.csproj|C:\\Users\\alber\\source\\repos\\Project XT v1.0.0\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{65CFAAFC-201D-EB2A-9873-17FA0106F15F}|Project XT v1.0.0.csproj|C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{65CFAAFC-201D-EB2A-9873-17FA0106F15F}|Project XT v1.0.0.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -24,11 +24,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\alber\\source\\repos\\Project XT v1.0.0\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\alber\\source\\repos\\Project XT v1.0.0\\Form1.cs",
+              "ToolTip": "C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAwwFsAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-15T17:54:32.66Z",
               "IsPinned": true,
@@ -42,12 +42,13 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\alber\\source\\repos\\Project XT v1.0.0\\Form1.cs",
+              "DocumentMoniker": "C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\alber\\source\\repos\\Project XT v1.0.0\\Form1.cs [Design]",
+              "ToolTip": "C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\Form1.cs [Design]",
               "RelativeToolTip": "Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-18T18:39:22.241Z"
+              "WhenOpened": "2025-12-18T18:39:22.241Z",
+              "EditorCaption": " [Design]"
             }
           ]
         },

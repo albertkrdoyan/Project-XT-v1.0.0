@@ -61,6 +61,9 @@
             // comboBox1
             // 
             comboBox1.FormattingEnabled = true;
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDown;
+            comboBox1.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            comboBox1.AutoCompleteSource = AutoCompleteSource.ListItems;
             comboBox1.Location = new Point(176, 42);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(612, 28);

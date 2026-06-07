@@ -44,15 +44,5 @@ namespace Project_XT_v1_0_0
             da.Fill(dt);
             return dt;
         }
-
-        //public void CreateTable(params string[] components)
-        //{
-        //    string query = "CREATE TABLE IF NOT EXISTS table_name (" +
-        //            "column1 datatype [constraints]," +
-        //            "column2 datatype [constraints]," +
-        //        ");";
-
-        //    MessageBox.Show(query);
-        //}
     }
 }

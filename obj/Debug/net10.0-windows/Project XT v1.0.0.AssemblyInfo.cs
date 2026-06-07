@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Project XT v1.0.0")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0083b40c49ad24ca996bd486f92238848e65a400")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+44b758171b55e42bfc492fae66d7b64a7e91bff2")]
 [assembly: System.Reflection.AssemblyProductAttribute("Project XT v1.0.0")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Project XT v1.0.0")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_XT_v1_0_0.Locals;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,13 +13,14 @@ namespace Project_XT_v1_0_0.Forms
     {
         private readonly Database db;
         private readonly string[] originalData;
+        public string[] result = new string[5];
         public EditOrganization(string orgName)
         {
             InitializeComponent();
 
-			db = new Database("C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\Project XT DB\\projext_xt.db");
+            db = new Database(Paths.dbPath);
 
-			DataTable dt = db.GetData($"SELECT * FROM Organizations Where Name = '{orgName}'");
+            DataTable dt = db.GetData($"SELECT * FROM Organizations Where Name = '{orgName}'");
             originalData = new string[4];
 
             textBox1.Text = dt.Rows[0][0].ToString();
@@ -72,11 +74,21 @@ namespace Project_XT_v1_0_0.Forms
                 $"WHERE Name = '{originalData[0]}'"
             );
 
+            db.ExecuteNonQuery(
+                "UPDATE Distributors " + 
+                $"SET Organization='{name}', TIN='{tin}' " +
+                $"WHERE Organization='{originalData[0]}'"
+            );
+
+            result = [name, tin, "", bankAccNumber, bankAccName];
+
+            this.DialogResult = DialogResult.Yes;
             this.Dispose();
         }
 
         private void Decline_button_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Dispose();
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_XT_v1_0_0.Locals;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,7 @@ namespace Project_XT_v1_0_0.Forms
         {
             InitializeComponent();
 
-			db = new Database("C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\Project XT DB\\projext_xt.db");
+			db = new Database(Paths.dbPath);
 		}
 
         private void Decline_Click(object sender, EventArgs e)

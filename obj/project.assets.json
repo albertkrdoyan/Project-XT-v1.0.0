@@ -1,7 +1,7 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
-    "net10.0-windows7.0": {
+    "net10.0-windows": {
       "Stub.System.Data.SQLite.Core.NetStandard/1.0.119": {
         "type": "package",
         "compile": {
@@ -76,7 +76,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net10.0-windows7.0": [
+    "net10.0-windows": [
       "System.Data.SQLite.Core >= 1.0.119"
     ]
   },
@@ -86,11 +86,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\Project XT v1.0.0.csproj",
+      "projectUniqueName": "C:\\Users\\alber\\Desktop\\Xanut\\Project XT v1.0.0\\Project XT v1.0.0.csproj",
       "projectName": "Project XT v1.0.0",
-      "projectPath": "C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\Project XT v1.0.0.csproj",
+      "projectPath": "C:\\Users\\alber\\Desktop\\Xanut\\Project XT v1.0.0\\Project XT v1.0.0.csproj",
       "packagesPath": "C:\\Users\\alber\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\obj\\",
+      "outputPath": "C:\\Users\\alber\\Desktop\\Xanut\\Project XT v1.0.0\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\alber\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -104,7 +104,8 @@
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net10.0-windows7.0": {
+        "net10.0-windows": {
+          "framework": "net10.0-windows7.0",
           "targetAlias": "net10.0-windows",
           "projectReferences": {}
         }
@@ -119,10 +120,11 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
-      "net10.0-windows7.0": {
+      "net10.0-windows": {
+        "framework": "net10.0-windows7.0",
         "targetAlias": "net10.0-windows",
         "dependencies": {
           "System.Data.SQLite.Core": {
@@ -149,7 +151,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

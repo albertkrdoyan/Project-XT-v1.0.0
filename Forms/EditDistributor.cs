@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_XT_v1_0_0.Locals;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,13 +14,14 @@ namespace Project_XT_v1_0_0.Forms
     {
         private readonly Database db;
         private readonly string[] originalData;
-		private readonly DataTable dt;
+        public string[] result = new string[5];
+        private readonly DataTable dt;
 
         public EditDistributor(string orgName)
         {
             InitializeComponent();
 
-			db = new Database("C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\Project XT DB\\projext_xt.db");
+			db = new Database(Paths.dbPath);
 			dt = db.GetData($"SELECT * FROM Distributors Where Name = '{orgName}'");
 
 			originalData = new string[3];
@@ -53,16 +55,23 @@ namespace Project_XT_v1_0_0.Forms
 				return;
 			}
 
+            if (comboBox1.SelectedIndex == -1)
+                return;
+
 			query = "UPDATE Distributors " +
                 $"SET Name='{textBox1.Text}', Organization='{dt.Rows[comboBox1.SelectedIndex][0]}', TIN='{dt.Rows[comboBox1.SelectedIndex][1]}', Phone='{textBox2.Text}' " +
                 $"WHERE Name='{originalData[0]}'";
 			db.ExecuteNonQuery(query);
 
+            result = [textBox1.Text, "", dt.Rows[comboBox1.SelectedIndex][0].ToString()!, dt.Rows[comboBox1.SelectedIndex][1].ToString()!, textBox2.Text];
+
+            this.DialogResult = DialogResult.Yes;
             this.Dispose();
         }
 
         private void Decline_button_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Dispose(true);
         }
     }

@@ -1,6 +1,8 @@
 ﻿using Project_XT_v1_0_0.Forms;
+using Project_XT_v1_0_0.Locals;
 using Project_XT_v1_0_0.Styles;
 using System.Data;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Project_XT_v1_0_0
 {
@@ -12,7 +14,7 @@ namespace Project_XT_v1_0_0
         {
             InitializeComponent();
 
-            db = new Database("C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\Project XT DB\\projext_xt.db");
+            db = new Database(Paths.dbPath);
 
             MyDataGridViewStyle.Init(ref dataGridView1);
 
@@ -25,7 +27,7 @@ namespace Project_XT_v1_0_0
             splitContainer1.SplitterDistance = 75;
         }
 
-        private void Show_orgs_Click(object sender, EventArgs e)
+        private void Show_orgs_Click(object? sender, EventArgs? e)
         {
 			splitContainer1.Visible = true;
 
@@ -46,10 +48,10 @@ namespace Project_XT_v1_0_0
             dataGridView1.Columns[3].Width = (int)((double)dgvWidth * 0.25);
             dataGridView1.Columns[4].Width = (int)((double)dgvWidth * 0.235);
 
-            dataGridView1.Focus();
+            //dataGridView1.Focus();
         }
 
-        private void Show_dists_Click(object sender, EventArgs e)
+        private void Show_dists_Click(object? sender, EventArgs? e)
         {
 			splitContainer1.Visible = true;
 
@@ -70,21 +72,41 @@ namespace Project_XT_v1_0_0
             dataGridView1.Columns[3].Width = (int)((double)dgvWidth * 0.09);
             dataGridView1.Columns[4].Width = (int)((double)dgvWidth * 0.21);
 
-			dataGridView1.Focus();
+			//dataGridView1.Focus();
 		}
 
         private void Edit_button_Click(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count == 0) return;
 
-            string name = dataGridView1!.CurrentRow!.Cells[0]!.Value!.ToString() ?? "";
+            string name = dataGridView1!.CurrentRow!.Cells[0]!.Value!.ToString() ?? "";            
 
             if (dataGridView1 is not null && currentDataGridView == "Organizations")
-                new EditOrganization(name).ShowDialog(this);
+            {              
+                EditOrganization eo = new EditOrganization(name);
+                if (eo.ShowDialog(this) == DialogResult.Yes)
+                {
+                    string[] result = eo.result;
+                    for (int i = 0; i < 5; ++i)
+                    {
+                        if (result[i] != "")
+                            dataGridView1!.CurrentRow!.Cells[i]!.Value = result[i];
+                    }                        
+                }
+            }
             else if (currentDataGridView == "Distributors")
-                new EditDistributor(name).ShowDialog(this);
+            {
+                EditDistributor ed = new EditDistributor(name);
+                if (ed.ShowDialog(this) == DialogResult.Yes)
+                {
+                    string[] result = ed.result;
+                    for (int i = 0; i < 5; ++i)
+                        if (result[i] != "")
+                            dataGridView1!.CurrentRow!.Cells[i]!.Value = result[i];
+                }
+            }
 
-            dataGridView1!.Focus();
+            //dataGridView1!.Focus();
         }
 
         private void Add_button_Click(object sender, EventArgs e)
@@ -92,7 +114,7 @@ namespace Project_XT_v1_0_0
             if (currentDataGridView == "Organizations") new AddOrganization().ShowDialog(this);
             else if (currentDataGridView == "Distributors") new AddDistributor().ShowDialog(this);
 
-            dataGridView1!.Focus();
+            //dataGridView1!.Focus();
         }
 
         private void Show_goods_button_Click(object sender, EventArgs e)
@@ -125,29 +147,46 @@ namespace Project_XT_v1_0_0
         {
             if (currentDataGridView == "Organizations")
             {
-                if (dataGridView1.SelectedCells[2].Value!.ToString() != "0") MessageBox.Show("Դուք չեք կարոհ հեռացնել այս կազմակերպությունը, քանի որ պարտքի չափը տարբեր է 0-ից:");
-                else
+                if (dataGridView1.SelectedCells[2].Value!.ToString() != "0")
                 {
-                    if (MessageBox.Show($"Դուք պատրաստվում եք հեռացնել '{dataGridView1.SelectedCells[0].Value!}' կազմակերպությունը:", "Կազմակերպության հեռացում", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        MessageBox.Show("Հեռացված է:");
-                    }
+                    MessageBox.Show("Դուք չեք կարող հեռացնել այս կազմակերպությունը, քանի որ պարտքի չափը տարբեր է 0-ից:");
+                    return;
+                }
+
+                string query = $"SELECT * FROM Distributors WHERE Organization='{dataGridView1.SelectedCells[0].Value!}'";
+                if (db.GetData(query).Rows.Count != 0)
+                {
+                    MessageBox.Show("Դուք չեք կարող հեռացնել այս կազմակերպությունը, քանի որ առկա են գրանցված դիստրիբյուտորներ:");
+                    return;
+                }
+
+                if (MessageBox.Show($"Դուք պատրաստվում եք հեռացնել '{dataGridView1.SelectedCells[0].Value!}' կազմակերպությունը:", "Կազմակերպության հեռացում", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    query = $"DELETE FROM Organizations WHERE Name='{dataGridView1.SelectedCells[0].Value!}'";
+                    db.ExecuteNonQuery(query);
+                    dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow!.Index);
+                    MessageBox.Show("Հեռացված է:");
+                    return;
                 }
             }
             else if (currentDataGridView == "Distributors")
             {
-                if (dataGridView1.SelectedCells[1].Value!.ToString() != "0") MessageBox.Show("Դուք չեք կարոհ հեռացնել այս դիստրիբյուտորին, քանի որ պարտքի չափը տարբեր է 0-ից:");
-                else
+                if (dataGridView1.SelectedCells[1].Value!.ToString() != "0")
                 {
-                    if (MessageBox.Show($"Դուք պատրաստվում եք հեռացնել '{dataGridView1.SelectedCells[0].Value!}' դիստրիբյուտորին:", "Դիստրիբյուտորտ հեռացում", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        MessageBox.Show("Հեռացված է:");
-                    }
+                    MessageBox.Show("Դուք չեք կարող հեռացնել այս դիստրիբյուտորին, քանի որ պարտքի չափը տարբեր է 0-ից:");
+                    return;
+                }
+                if (MessageBox.Show($"Դուք պատրաստվում եք հեռացնել '{dataGridView1.SelectedCells[0].Value!}' դիստրիբյուտորին:", "Դիստրիբյուտորտ հեռացում", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    string query = $"DELETE FROM Distributors WHERE Name='{dataGridView1.SelectedCells[0].Value!}'";
+                    db.ExecuteNonQuery(query);
+                    dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow!.Index);
+                    MessageBox.Show("Հեռացված է:");
                 }
             }
             else if (currentDataGridView == "Goods")
             {
-                if (dataGridView1.SelectedCells[1].Value!.ToString() != "0") MessageBox.Show("Դուք չեք կարոհ հեռացնել այս ap8anqy, քանի որ քանակությունը տարբեր է 0-ից:");
+                if (dataGridView1.SelectedCells[1].Value!.ToString() != "0") MessageBox.Show("Դուք չեք կարող հեռացնել այս ապրանքը, քանի որ քանակությունը տարբեր է 0-ից:");
                 else
                 {
                     if (MessageBox.Show($"Դուք պատրաստվում եք հեռացնել '{dataGridView1.SelectedCells[0].Value!}' ապրանքը:", "Ապրանքի հեռացում", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -157,7 +196,7 @@ namespace Project_XT_v1_0_0
                 }
             }
 
-            dataGridView1.Focus();
+            //dataGridView1.Focus();
         }
     }
 }

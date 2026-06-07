@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_XT_v1_0_0.Locals;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,7 +18,7 @@ namespace Project_XT_v1_0_0.Forms
         {
             InitializeComponent();
 
-			db = new Database("C:\\Users\\alber\\Desktop\\Project XT v1.0.0\\Project XT DB\\projext_xt.db");
+			db = new Database(Paths.dbPath);
 
 			dt = db.GetData("SELECT * FROM Organizations ORDER BY Name");
             
@@ -33,6 +34,9 @@ namespace Project_XT_v1_0_0.Forms
 				MessageBox.Show("Անվանում դաշտը չի կարող լինել դատարկ:");
                 return;
 			}
+
+            if (comboBox1.SelectedIndex == -1)
+                return;
 
             db.ExecuteNonQuery(
 				"INSERT INTO Distributors (Name, Debt, Organization, TIN, Phone) " +
